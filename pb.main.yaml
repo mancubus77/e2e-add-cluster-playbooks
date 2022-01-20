@@ -1,0 +1,15 @@
+---
+- name: Render examlle 
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  #strategy: free
+
+  tasks:
+  - name: Render templaes
+    include_tasks: tasks/main.yaml
+    vars:
+      - cluster_name: hornsby
+      - cluster_location: hornsby-2077-nsw
+      - machine_network: 10.1.196.0/24
+      - dst_template_path: /tmp/lol

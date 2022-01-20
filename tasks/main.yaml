@@ -1,0 +1,12 @@
+- name: ensure all template files are rendered
+  template:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+  loop:
+    - { src: 'templates/namespace.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-namespace.yaml' }
+    - { src: 'templates/agentinstall.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-agentinstall.yaml' }
+    - { src: 'templates/clusteraaddon.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-clusteraaddon.yaml' }
+    - { src: 'templates/clusterdeployment.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-clusterdeployment.yaml' }
+    - { src: 'templates/infraenv.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-infraenv.yaml' }
+    - { src: 'templates/managedcluster.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-managedcluster.yaml' }
+
