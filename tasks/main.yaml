@@ -10,3 +10,12 @@
     - { src: 'templates/infraenv.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-infraenv.yaml' }
     - { src: 'templates/managedcluster.yaml.j2', dest: '{{ dst_template_path }}/{{cluster_name}}-managedcluster.yaml' }
 
+- name: List all files in the directory
+  find:
+    path: "{{ dst_template_path }}"
+  register: _result
+
+- name: Write Kustomisation file
+  template:
+    src: 'templates/kustomization.yaml.j2'
+    dest: '{{ dst_template_path }}/kustomization.yaml'
