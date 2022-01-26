@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 {% for file in _result.files%}
   - {{ file.path | split('/') | last }}
-{% endfor %}%}
+{% endfor %}
