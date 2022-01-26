@@ -19,5 +19,5 @@ spec:
     agentBareMetal:
       agentSelector:
         matchLabels: {}
-#   pullSecretRef:
-#     name: pullsecret-cluster-hornsby
+  pullSecretRef:
+    name: pullsecret-cluster-{{ cluster_name }}
