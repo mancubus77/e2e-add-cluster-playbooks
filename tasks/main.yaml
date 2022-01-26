@@ -19,3 +19,10 @@
   template:
     src: 'templates/kustomization.yaml.j2'
     dest: '{{ dst_template_path }}/kustomization.yaml'
+
+- name: Apply manifests
+  kubernetes.core.k8s:
+    resource_definition : "{{ item }}"
+  with_items:
+    - "{{ lookup('template', 'namespace.yaml.j2') }}"
+    - "{{ lookup('template', 'secret.yaml.j2') }}"

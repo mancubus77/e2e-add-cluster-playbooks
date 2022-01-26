@@ -13,3 +13,4 @@
       - cluster_location: hornsby-2077-nsw
       - machine_network: 10.1.196.0/24
       - dst_template_path: /tmp/lol
+
