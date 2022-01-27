@@ -1,3 +1,15 @@
+- name: Ensure directoy is empty
+  ansible.builtin.file:
+    path: "{{ dst_template_path }}"
+    state: absent
+  ignore_errors: true
+
+- name: Ensure directoy is empty
+  ansible.builtin.file:
+    path: "{{ dst_template_path }}"
+    state: present
+  ignore_errors: true
+
 - name: ensure all template files are rendered
   template:
     src: '{{ item.src }}'
@@ -20,7 +32,7 @@
     src: 'templates/kustomization.yaml.j2'
     dest: '{{ dst_template_path }}/kustomization.yaml'
 
-- name: Apply manifests
+- name: Create namespace and pull secret
   kubernetes.core.k8s:
     resource_definition : "{{ item }}"
   with_items:
