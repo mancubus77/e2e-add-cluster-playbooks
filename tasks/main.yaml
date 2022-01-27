@@ -4,10 +4,10 @@
     state: absent
   ignore_errors: true
 
-- name: Ensure directoy is empty
+- name: Create directory
   ansible.builtin.file:
     path: "{{ dst_template_path }}"
-    state: present
+    state: directory
   ignore_errors: true
 
 - name: ensure all template files are rendered
